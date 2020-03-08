@@ -56,3 +56,9 @@
     -o-transform:translate(-30px, -2px);
     transform:translate(-30px, -2px);
 }
+
+img {
+    margin: 0 auto;
+    border-radius: 30px;
+    width: 50px;
+}
