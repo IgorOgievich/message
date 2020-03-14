@@ -1,15 +1,26 @@
 import React from 'react';
-import logo from '../logo.svg';
-import './Message.css';
+import a from "./Message.module.css";
+
 
 function Message() {
   return (
-      <div>
-    <div className="message">
-      My Message
-    </div>
-          <div>
-              <img src="https://sun9-44.userapi.com/bLy7DoMt-_lTc8Shcb3UYaEPTBwtxGtXoq29Yw/iqcg7KWdsFA.jpg?ava=1"/>
+      <div className={a.myMessage}>
+          <div className={a.borderMessage}>
+              <div className={a.name}>
+                 Igor Ogievich
+              </div>
+              <div className={a.before}>
+
+              </div>
+              <div className={a.after}>
+
+              </div>
+              <div className={a.text}>
+                  Hello, how are you?
+              </div>
+              <div className={a.time}>
+                  12:20 AM
+              </div>
           </div>
       </div>
 

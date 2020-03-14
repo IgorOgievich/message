@@ -1,15 +1,4 @@
-.App {
-display: grid;
-    grid-template-rows: 2fr 8fr;
-    border: 1px solid #fc96;
-    border-radius: 5px;
-    padding: 5px;
-}
-.a {
-    background-color: aqua;
-}
-.b {
-    background-color: cornflowerblue;
-}
+
+
 
 
