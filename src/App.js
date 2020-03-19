@@ -1,11 +1,14 @@
 import React from 'react';
 import './App.css';
 import Message from "./Message/Message";
+import Qualities from "./Qualities/Qualities";
 
-function App() {
+function App(props) {
+
     return (
         <div className="App">
-                <Message/>
+                <Message />
+                <Qualities />
             </div>
     );
 }

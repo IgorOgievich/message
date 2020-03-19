@@ -1,0 +1,12 @@
+.qualities {
+    color: black ;
+    text-align: center;
+    padding: 3px;
+
+}
+.blockQualities {
+    background-color: gold;
+    border-radius: 30px;
+    width: 600px;
+
+}
