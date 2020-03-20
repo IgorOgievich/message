@@ -1,12 +1,16 @@
 .qualities {
-    color: black ;
+    color: black;
     text-align: center;
     padding: 3px;
-
 }
+
 .blockQualities {
     background-color: gold;
     border-radius: 30px;
     width: 600px;
-
+}
+.NewQualities {
+    color: azure;
+    text-align: center;
+    padding: 3px;
 }

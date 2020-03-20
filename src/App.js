@@ -7,9 +7,9 @@ function App(props) {
 
     return (
         <div className="App">
-                <Message />
-                <Qualities />
-            </div>
+            <Message/>
+            <Qualities/>
+        </div>
     );
 }
 
