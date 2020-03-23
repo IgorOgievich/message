@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Message from "./Message/Message";
 import Qualities from "./Qualities/Qualities";
+import ShowName from "./ShowName/ShowName";
 
 function App(props) {
 
@@ -9,6 +10,7 @@ function App(props) {
         <div className="App">
             <Message/>
             <Qualities/>
+            <ShowName/>
         </div>
     );
 }

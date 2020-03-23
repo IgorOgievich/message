@@ -6,7 +6,7 @@ function Message() {
         <div className={a.myMessage}>
             <div className={a.borderMessage}>
                 <div className={a.name}>
-                    Igor Ogievich
+                    Igor Ogievichjgyjg
                 </div>
                 <div className={a.before}>
 
