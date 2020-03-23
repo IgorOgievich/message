@@ -18,9 +18,8 @@ class ShowName extends React.Component {
             )
         };
         let rezult = () => {
-            return (
-                returnName() + plusOne()
-            )
+            returnName()
+            plusOne()
         };
 
         return (
