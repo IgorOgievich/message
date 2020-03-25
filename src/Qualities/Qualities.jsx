@@ -7,7 +7,7 @@ let arrQualities = [
     {quality: "Богатый"}
 ];
 
-function Qualities() {
+function Qualities(props) {
     let myQualities = arrQualities.map((el, i) => (i === 1) ?
         <div className={a.qualities} key={i}> - {el.quality} </div> :
         <div className={a.NewQualities} key={i}> - {el.quality} </div>
@@ -16,7 +16,6 @@ function Qualities() {
     return (
         <div className={a.blockQualities}>
             {myQualities}
-            {console.log(myQualities)}
         </div>
     );
 }
