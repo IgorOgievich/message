@@ -12,7 +12,7 @@ class App extends React.Component {
             <div className="App">
                 <Message/>
                 <Qualities/>
-                <ShowName />
+                <ShowName/>
             </div>
         );
     };

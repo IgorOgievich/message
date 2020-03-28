@@ -9,53 +9,47 @@ class ShowName extends React.Component {
     newNumber = React.createRef();
     state = {
         arr: [
-            {name: "Igor"},
-        ]
+            {name: ""},
+        ],
     };
 
-    newarr = () =>{
+    newarr = () => {
         let newNameOne = this.newName.current.value;
         let twoName = {name: newNameOne};
-    let newNamer = [...this.state.arr, twoName];
+        let newNamer = [...this.state.arr, twoName];
         this.setState({
             arr: newNamer
         });
     };
+    plusOne = () => {
+        let plus = +this.newNumber.current.value + 1;
+        return (
+            this.newNumber.current.value = plus
+        )
+    };
+    returnName = () => {
+        let name = this.newName.current.value;
+        alert("Привет " + `${name}`);
+        this.newName.current.value = "";
+    };
+    rezult = () => {
+        this.newarr();
+        this.returnName();
+        this.plusOne();
+    };
 
     render = () => {
 
-        let returnName = () => {
-            let name = this.newName.current.value;
-            alert("Привет " + `${name}`);
-            this.newName.current.value = "";
-        };
-
-        let plusOne = () => {
-            let plus = this.newNumber.current.value;
-            this.newNumber.current.value = +plus + 1;
-            return(
-                plus
-            )
-
-        };
-
-        let rezult = () => {
-            this.newarr();
-            returnName();
-            plusOne();
-        };
-
-        let arrName = this.state.arr.map(e =>  <DisplayName name = {e.name} />);
+        let arrName = this.state.arr.map(e => <DisplayName name={e.name}/>);
 
         return (
             <div className={a.showName}>
                 <p>Ваше имя:</p>
                 <input ref={this.newNumber} value="0" size={2}/>
                 <input type="text" ref={this.newName} placeholder="Введите ваше имя"/>
-                <button onClick={rezult}>Клик</button>
+                <button onClick={this.rezult}>Клик</button>
                 <p>Введенные имена:</p>
                 {arrName}
-                {this.rename}
             </div>
         );
     };
