@@ -2,6 +2,7 @@ import React from 'react';
 import a from "../ShowName/ShowName.module.css";
 import DisplayName from "./DisplayName/DisplayName";
 import Input from "./Input/Input";
+import Span from "./Span/Span";
 
 class ShowName extends React.Component {
 
@@ -10,7 +11,8 @@ class ShowName extends React.Component {
             // {nameTask: "Igor"},
         ],
         valueInputName: "",
-        valueInputNumber: 0
+        valueInputNumber: 0,
+        error: false,
     };
 
     addTask = (newText) => {
@@ -29,13 +31,23 @@ class ShowName extends React.Component {
 
     onClickAddButton = () => {
         let valueInputName = this.state.valueInputName;
-        let plus = this.state.valueInputNumber + 1;
+        let valueInputNumber = this.state.valueInputNumber;
+        let plus = valueInputNumber + 1;
         alert("Привет " + `${valueInputName}`);
         this.addTask(valueInputName);
         this.state.valueInputName = "";
-        return (
-            this.state.valueInputNumber = plus
-        )
+        if (valueInputName === "") {
+            this.setState({error: true});
+            return (
+                valueInputNumber
+            )
+        } else {
+            this.setState({error: false});
+            this.addTask(valueInputName);
+            return (
+                this.state.valueInputNumber = plus
+            )
+        }
     };
 
     onKeyPress = (e) => {
@@ -47,18 +59,22 @@ class ShowName extends React.Component {
     render = () => {
 
         let arrName = this.state.tasks.map(e => <DisplayName name={e.nameTask}/>);
+        let classForError = this.state.error ? "error" : "inputOne";
         return (
             <div className={a.showName}>
                 <p>Ваше имя:</p>
-                <span>
-                {this.state.valueInputNumber}
-                </span>
-                <Input value={this.state.valueInputName}
-                       onChange={this.onValueInputNameChange}
-                       onKeyPress={this.onKeyPress}
-                />
+                <div className={a.spanInputButton}>
+                    <Span valueSpan={this.state.valueInputNumber}/>
+                    <Input
+                        classInput={classForError}
+                        value={this.state.valueInputName}
+                        onChange={this.onValueInputNameChange}
+                        onKeyPress={this.onKeyPress}
+                    />
+                    <button onClick={this.onClickAddButton}>Add</button>
 
-                <button onClick={this.onClickAddButton}>Add</button>
+                </div>
+
                 <p>Введенные имена:</p>
                 {arrName}
             </div>
