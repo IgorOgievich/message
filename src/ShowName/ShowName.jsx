@@ -37,6 +37,7 @@ class ShowName extends React.Component {
             this.state.valueInputNumber = plus
         )
     };
+
     onKeyPress = (e) => {
         if (e.key === "Enter") {
             this.onClickAddButton();
