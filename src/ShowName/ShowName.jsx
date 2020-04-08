@@ -33,20 +33,14 @@ class ShowName extends React.Component {
         let valueInputName = this.state.valueInputName;
         let valueInputNumber = this.state.valueInputNumber;
         let plus = valueInputNumber + 1;
-        alert("Привет " + `${valueInputName}`);
         this.addTask(valueInputName);
         this.state.valueInputName = "";
         if (valueInputName === "") {
             this.setState({error: true});
-            return (
-                valueInputNumber
-            )
         } else {
             this.setState({error: false});
-            this.addTask(valueInputName);
-            return (
-                this.state.valueInputNumber = plus
-            )
+            this.setState({valueInputNumber: plus});
+            alert("Привет " + `${valueInputName}`);
         }
     };
 

@@ -1,5 +1,11 @@
-
-
+.App {
+    display: flex;
+    flex-direction: column;
+}
+.navAndContent{
+    display: flex;
+    flex-direction: row;
+}
 
 
 
