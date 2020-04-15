@@ -1,0 +1,14 @@
+.inputOne {
+    display: flex;
+    padding-left: 15px;
+    padding-right: 5px;
+}
+
+.error input{
+    border-color: red;
+}
+.error{
+    display: flex;
+    padding-left: 15px;
+    padding-right: 5px;
+}
