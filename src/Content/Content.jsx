@@ -12,6 +12,7 @@ class Content extends React.Component {
                 <Message/>
                 <Qualities/>
                 <ShowName/>
+
             </div>
         );
     };
