@@ -1,12 +1,13 @@
 import React from 'react';
 import '../App.css';
 import a from './Tuesday.module.css'
+import TodoListApp from "./TodoList/TodoListApp";
 
 class Tuesday extends React.Component {
     render = () => {
         return (
             <div className={a.tuesday}>
-              <h1>Hello</h1>
+              <TodoListApp/>
             </div>
         );
     };

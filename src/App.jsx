@@ -6,7 +6,6 @@ import Monday from "./Monday/Monday";
 import Tuesday from "./ Tuesday/Tuesday";
 import {HashRouter, Route} from "react-router-dom";
 
-
 class App extends React.Component {
     render = () => {
         return (
