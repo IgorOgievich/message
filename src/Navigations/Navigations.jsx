@@ -9,13 +9,13 @@ class Navigations extends React.Component {
         return (
             <div className={a.nav}>
                 <div className={a.items}>
-                    <NavLink to="/Monday" >
-                    <button> Понедельник </button>
+                    <NavLink to="/Monday">
+                        <button> Понедельник</button>
                     </NavLink>
                 </div>
                 <div className={a.items}>
-                    <NavLink to="/Tuesday" >
-                    <button> Вторник </button>
+                    <NavLink to="/Tuesday">
+                        <button> Вторник</button>
                     </NavLink>
                 </div>
             </div>

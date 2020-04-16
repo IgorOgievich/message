@@ -52,7 +52,10 @@ class ShowName extends React.Component {
 
     render = () => {
 
-        let arrName = this.state.tasks.map(e => <DisplayName name={e.nameTask}/>);
+        let arrName = this.state.tasks.map((e, i) => <DisplayName
+            name={e.nameTask}
+            key={i}
+        />);
         let classForError = this.state.error ? "error" : "inputOne";
         return (
             <div className={a.showName}>
