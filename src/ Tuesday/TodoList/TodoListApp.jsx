@@ -3,7 +3,6 @@ import './TodoListApp.css';
 import TodoList from "./TodoList";
 import AddNewItemForm from "./AddNewItemForm";
 
-
 class TodoListApp extends React.Component {
     state = {
         todolist:[

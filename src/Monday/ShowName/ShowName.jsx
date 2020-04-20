@@ -24,9 +24,15 @@ class ShowName extends React.Component {
     };
 
     onValueInputNameChange = (e) => {
+        let valueInputName = this.state.valueInputName;
         this.setState({
             valueInputName: e.currentTarget.value
         });
+        if (valueInputName === " ") {
+            this.setState({error: true});
+        } else {
+            this.setState({error: false});
+        }
     };
 
     onClickAddButton = () => {

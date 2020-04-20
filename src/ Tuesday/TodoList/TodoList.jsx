@@ -11,6 +11,7 @@ class TodoList extends React.Component {
         localStorage.setItem("our-state" + this.props.id, JSON.stringify(this.state));
     };
 
+
     restoreState = () => {
         let state = this.state;
         let stateAsString = localStorage.getItem("our-state" + this.props.id);
@@ -40,9 +41,18 @@ class TodoList extends React.Component {
         filterValue: "All"
 
     };
+
+    // deleteTask = (removedId) =>{
+    //     let newArr = this.state.tasks.filter(e=> e.id !== removedId);
+    //     let newArray = [...this.state.tasks, newArr];
+    //     this.setState({
+    //         tasks: newArray
+    //     }, this.saveState);
+    // };
+
     addTask = (newText) => {
         let newTask = {
-            id: this.nextTaskId, title: newText, isDone: false, priority: "low"
+            id: this.nextTaskId, title: newText, isDone: false, priority: "low-"
         };
         this.nextTaskId++;
         let newTasks = [...this.state.tasks, newTask];
@@ -85,6 +95,8 @@ class TodoList extends React.Component {
                         <AddNewItemForm addItem={this.addTask}/>
                     </div>
                     <TodoListTasks changeStatus={this.changeStatus}
+                                   // deleteTask ={this.deleteTask}
+                                   state = {this.state.tasks}
                                    changeTitle={this.changeTitle}
                                    tasks={this.state.tasks.filter(t => {
                                        if (this.state.filterValue === "All") {
