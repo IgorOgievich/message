@@ -1,6 +1,6 @@
 
-    export const saveState = (state) => {
-        localStorage.setItem("our-state" , JSON.stringify(state));
+    export const saveState = (key,state) => {
+        localStorage.setItem("our-state" + key , JSON.stringify(state));
     };
 
     export const restoreState = (key, defaultState) => {
@@ -9,7 +9,7 @@
         if (stateAsString) {
             state = JSON.parse(stateAsString);
         }
-        this.setState(state, () => {
+         this.setState(state, () => {
             this.state.tasks.forEach(task => {
                 if (task.id >= this.nextTaskId) {
                     this.nextTaskId = task.id + 1;

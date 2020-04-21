@@ -3,13 +3,15 @@ import AddNewItemForm from "./AddNewItemForm";
 import TodoListTasks from "./TodoListTasks";
 import TodoListFooter from "./TodoListFooter";
 import TodoListTitle from "./TodoListTitle";
+import {saveState} from "./SaveAndDefaultState";
+import {restoreState} from "./SaveAndDefaultState";
 
 class TodoList extends React.Component {
     nextTaskId = 1;
 
-    saveState = () => {
-        localStorage.setItem("our-state" + this.props.id, JSON.stringify(this.state));
-    };
+    // saveState = () => {
+    //     localStorage.setItem("our-state" + this.props.id, JSON.stringify(this.state));
+    // };
 
 
     restoreState = () => {
@@ -28,7 +30,7 @@ class TodoList extends React.Component {
     };
 
     componentDidMount() {
-        this.restoreState()
+       this. restoreState()
     };
 
     state = {
@@ -58,13 +60,13 @@ class TodoList extends React.Component {
         let newTasks = [...this.state.tasks, newTask];
         this.setState({
             tasks: newTasks
-        }, this.saveState);
+        }, () => saveState(this.props.id, this.state));
     };
 
     changeFilter = (newFilterValue) => {
         this.setState({
             filterValue: newFilterValue
-        }, this.saveState);
+        },() =>saveState(this.props.id, this.state));
     };
 
     changeTask = (taskId, obj) => {
@@ -77,7 +79,7 @@ class TodoList extends React.Component {
         });
         this.setState({
             tasks: newTasks
-        }, this.saveState)
+        },() => saveState(this.props.id, this.state))
     };
     changeStatus = (taskId, isDone) => {
         this.changeTask(taskId, {isDone: isDone})
