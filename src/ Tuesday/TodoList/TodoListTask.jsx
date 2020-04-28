@@ -24,6 +24,13 @@ class TodoListTask extends React.Component {
     onTitleChanged = (e) => {
         this.props.changeTitle(this.props.task.id, e.currentTarget.value);
     };
+
+    onClickAddDelete = () => {
+        let newId = this.props.task.id;
+        this.props.deleteTask(newId);
+    };
+
+
     render = () => {
 
         let taskClass = this.props.task.isDone ? "todoList-task done" : "todoList-task";
@@ -45,8 +52,9 @@ class TodoListTask extends React.Component {
                     : <span onClick={this.activateEditMode}>{this.props.task.title}</span>
                 }
                 <span>-priority- {this.props.task.priority}</span>
-                <button>delete</button>
+                <button onClick={this.onClickAddDelete}>delete</button>
             </div>)
+
     }
 }
 

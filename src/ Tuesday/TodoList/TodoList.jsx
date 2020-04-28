@@ -4,7 +4,6 @@ import TodoListTasks from "./TodoListTasks";
 import TodoListFooter from "./TodoListFooter";
 import TodoListTitle from "./TodoListTitle";
 import {saveState} from "./SaveAndDefaultState";
-import {restoreState} from "./SaveAndDefaultState";
 
 class TodoList extends React.Component {
     nextTaskId = 1;
@@ -30,7 +29,7 @@ class TodoList extends React.Component {
     };
 
     componentDidMount() {
-       this. restoreState()
+       this.restoreState()
     };
 
     state = {
@@ -44,13 +43,15 @@ class TodoList extends React.Component {
 
     };
 
-    // deleteTask = (removedId) =>{
-    //     let newArr = this.state.tasks.filter(e=> e.id !== removedId);
-    //     let newArray = [...this.state.tasks, newArr];
-    //     this.setState({
-    //         tasks: newArray
-    //     }, this.saveState);
-    // };
+    deleteTask = (taskId) => {
+        let newArr = this.state.tasks.filter(e => e.id !== taskId);
+        this.setState({
+            tasks: newArr
+        }, () =>saveState(this.props.id, this.state))
+    };
+
+
+
 
     addTask = (newText) => {
         let newTask = {
@@ -97,7 +98,7 @@ class TodoList extends React.Component {
                         <AddNewItemForm addItem={this.addTask}/>
                     </div>
                     <TodoListTasks changeStatus={this.changeStatus}
-                                   // deleteTask ={this.deleteTask}
+                                   deleteTask ={this.deleteTask}
                                    state = {this.state.tasks}
                                    changeTitle={this.changeTitle}
                                    tasks={this.state.tasks.filter(t => {

@@ -2,6 +2,7 @@ import React from 'react';
 import './TodoListApp.css';
 import TodoList from "./TodoList";
 import AddNewItemForm from "./AddNewItemForm";
+import {saveState} from "./SaveAndDefaultState";
 
 class TodoListApp extends React.Component {
     state = {
@@ -15,12 +16,12 @@ class TodoListApp extends React.Component {
     nextTodoListId = 0;
 
     saveState = () => {
-        localStorage.setItem("todoList-state", JSON.stringify(this.state));
+        localStorage.setItem("todoList-state" + this.state.todolist.id, JSON.stringify(this.state));
     };
 
     restoreState = () => {
         let state = this.state;
-        let stateAsString = localStorage.getItem("todoList-state");
+        let stateAsString = localStorage.getItem("todoList-state" + this.state.id);
         if (stateAsString) {
             state = JSON.parse(stateAsString);
         }
@@ -49,6 +50,7 @@ class TodoListApp extends React.Component {
         }, this.saveState)
     };
 
+
     render= () => {
         let todoList = this.state.todolist.map(t => {
             return  <TodoList id = {t.id}
@@ -59,7 +61,9 @@ class TodoListApp extends React.Component {
         return (
             <div>
                 <div>
-                   <AddNewItemForm addItem = {this.addTodoList}/>
+                   <AddNewItemForm addItem = {this.addTodoList}
+                                   deleteTodoList = {this.deleteTodoList}
+                   />
                 </div>
             <div className="TodoListApp">
                 {todoList}
