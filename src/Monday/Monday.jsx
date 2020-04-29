@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.css';
+import '../App.module.css';
 import a from './monday.module.css'
 import Message from "../Monday/Message/Message";
 import Qualities from "../Monday/Qualities/Qualities";

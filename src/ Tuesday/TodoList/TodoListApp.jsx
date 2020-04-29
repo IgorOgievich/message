@@ -6,7 +6,7 @@ import {saveState} from "./SaveAndDefaultState";
 
 class TodoListApp extends React.Component {
     state = {
-        todolist:[
+        todolist: [
             // {id:"01", title: "Home"},
             // {id:"02", title: "Gobs" },
             // {id:"03", title: "Sport" },
@@ -15,13 +15,13 @@ class TodoListApp extends React.Component {
 
     nextTodoListId = 0;
 
-    saveState = () => {
-        localStorage.setItem("todoList-state" + this.state.todolist.id, JSON.stringify(this.state));
-    };
+    // saveState = () => {
+    //     localStorage.setItem("todoList-state" + this.state.todolist.id, JSON.stringify(this.state));
+    // };
 
     restoreState = () => {
         let state = this.state;
-        let stateAsString = localStorage.getItem("todoList-state" + this.state.id);
+        let stateAsString = localStorage.getItem("our-state" + this.state.id);
         if (stateAsString) {
             state = JSON.parse(stateAsString);
         }
@@ -32,14 +32,15 @@ class TodoListApp extends React.Component {
                 }
             })
         });
+
     };
 
     componentDidMount() {
         this.restoreState();
     };
 
-    addTodoList = (newTodoLisName) =>{
-        let newTodo ={
+    addTodoList = (newTodoLisName) => {
+        let newTodo = {
             title: newTodoLisName,
             id: this.nextTodoListId
         };
@@ -47,27 +48,27 @@ class TodoListApp extends React.Component {
         this.setState({
             todolist: [...this.state.todolist, newTodo
             ]
-        }, this.saveState)
+        }, () => saveState(this.state.id, this.state))
     };
 
 
-    render= () => {
+    render = () => {
         let todoList = this.state.todolist.map(t => {
-            return  <TodoList id = {t.id}
-                              title = {t.title}
-                              key = {t.id}
+            return <TodoList id={t.id}
+                             title={t.title}
+                             key={t.id}
             />
         });
         return (
             <div>
                 <div>
-                   <AddNewItemForm addItem = {this.addTodoList}
-                                   deleteTodoList = {this.deleteTodoList}
-                   />
+                    <AddNewItemForm addItem={this.addTodoList}
+                                    deleteTodoList={this.deleteTodoList}
+                    />
                 </div>
-            <div className="TodoListApp">
-                {todoList}
-            </div>
+                <div className="TodoListApp">
+                    {todoList}
+                </div>
             </div>
         );
     }
