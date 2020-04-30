@@ -4,7 +4,24 @@ import './TodoListApp.css';
 class TodoListTask extends React.Component {
 
     state = {
-        editMode: false
+        editMode: false,
+        priority:"high"
+    };
+
+    changePriority = () => {
+        if (this.state.priority === "high") {
+            this.setState({
+                priority: "low"
+            })
+        } else if (this.state.priority === "low") {
+            this.setState({
+                priority: "middle"
+            })
+        } else {
+            this.setState({
+                priority: "high"
+            })
+        }
     };
 
     activateEditMode = () => {
@@ -36,6 +53,7 @@ class TodoListTask extends React.Component {
         let taskClass = this.props.task.isDone ? "todoList-task done" : "todoList-task";
 
         return (
+            <div className="task">
             <div className={taskClass}>
                 <input
                     type="checkbox"
@@ -51,8 +69,9 @@ class TodoListTask extends React.Component {
                     />
                     : <span onClick={this.activateEditMode}>{this.props.task.title}</span>
                 }
-                <span>-priority- {this.props.task.priority}</span>
-                <button onClick={this.onClickAddDelete}>delete</button>
+                <span><span className="pr">/priority-</span> <button onClick={this.changePriority} className="priority">{this.state.priority}</button></span>
+            </div>
+            <button className="deleteButton" onClick={this.onClickAddDelete}>x</button>
             </div>)
 
     }

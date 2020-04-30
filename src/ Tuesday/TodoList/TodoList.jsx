@@ -47,9 +47,10 @@ class TodoList extends React.Component {
     };
 
 
-    addTask = (newText) => {
+    addTask = (newText,) => {
         let newTask = {
-            id: this.nextTaskId, title: newText, isDone: false, priority: "low-"
+            id: this.nextTaskId, title: newText, isDone: false
+            // priority:"low"
         };
         this.nextTaskId++;
         let newTasks = [...this.state.tasks, newTask];

@@ -4,7 +4,9 @@
 }
 
 .todoList-task {
-
+border: 3px solid;
+  border-radius: 20px;
+  margin: 2px 1px;
 }
 .filter-active {
   background-color: brown;
@@ -26,6 +28,21 @@
 
 .todoList {
   width: 300px;
+}
+.priority{
+  color: black;
+  margin-right: 10px;
+}
+.pr{
+  margin-left: 10px;
+}
+.task {
+  display: flex;
+}
+.deleteButton{
+  width: 30px;
+  height: 30px;
+ margin-left: 3px;
 }
 
 
