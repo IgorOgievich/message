@@ -5,22 +5,30 @@ class TodoListTask extends React.Component {
 
     state = {
         editMode: false,
-        priority:"high"
+        priority: "high",
+        classPriority: "priority"
     };
 
     changePriority = () => {
-        if (this.state.priority === "high") {
-            this.setState({
-                priority: "low"
-            })
-        } else if (this.state.priority === "low") {
-            this.setState({
-                priority: "middle"
-            })
-        } else {
-            this.setState({
-                priority: "high"
-            })
+        switch (this.state.priority) {
+            case "high":
+                this.setState({
+                    priority: "low",
+                    classPriority: "greenPriority"
+                });
+                break;
+            case  "low":
+                this.setState({
+                    priority: "middle",
+                    classPriority: "redPriority"
+                });
+                break;
+            case  "middle":
+                this.setState({
+                    priority: "high",
+                    classPriority: "priority"
+                });
+                break;
         }
     };
 
@@ -54,24 +62,29 @@ class TodoListTask extends React.Component {
 
         return (
             <div className="task">
-            <div className={taskClass}>
-                <input
-                    type="checkbox"
-                    checked={this.props.task.isDone}
-                    onChange={this.onIsDoneChanged}
-                />
-                <span>{this.props.task.id} - </span>
-                {this.state.editMode
-                    ? <input value={this.props.task.title}
-                             autoFocus={true}
-                             onBlur={this.deactivateEditMode}
-                             onChange={this.onTitleChanged}
+                <div className={taskClass}>
+                    <input
+                        type="checkbox"
+                        checked={this.props.task.isDone}
+                        onChange={this.onIsDoneChanged}
                     />
-                    : <span onClick={this.activateEditMode}>{this.props.task.title}</span>
-                }
-                <span><span className="pr">/priority-</span> <button onClick={this.changePriority} className="priority">{this.state.priority}</button></span>
-            </div>
-            <button className="deleteButton" onClick={this.onClickAddDelete}>x</button>
+                    <span>{this.props.task.id} - </span>
+                    {this.state.editMode
+                        ? <input value={this.props.task.title}
+                                 autoFocus={true}
+                                 onBlur={this.deactivateEditMode}
+                                 onChange={this.onTitleChanged}
+                        />
+                        : <span onClick={this.activateEditMode}>{this.props.task.title}</span>
+                    }
+                    <span>
+                        <span className="pr">/priority-</span>
+                        <button onClick={this.changePriority} className={this.state.classPriority}>
+                            {this.state.priority}
+                        </button>
+                    </span>
+                </div>
+                <button className="deleteButton" onClick={this.onClickAddDelete}>x</button>
             </div>)
 
     }

@@ -20,7 +20,7 @@ class App extends React.Component {
     };
 
     componentDidMount() {
-        setTimeout( this.loading, 3000)
+        setTimeout(this.loading, 3000)
     };
 
 
@@ -43,7 +43,7 @@ class App extends React.Component {
         } else {
             return (
                 <div className={m.loading}>
-                <Loading/>
+                    <Loading/>
                 </div>
             )
         }

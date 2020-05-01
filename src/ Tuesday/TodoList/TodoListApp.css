@@ -33,6 +33,14 @@ border: 3px solid;
   color: black;
   margin-right: 10px;
 }
+.greenPriority{
+  background-color: green;
+  margin-right: 10px;
+}
+.redPriority{
+  background-color: red;
+  margin-right: 10px;
+}
 .pr{
   margin-left: 10px;
 }
