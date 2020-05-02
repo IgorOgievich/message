@@ -5,42 +5,19 @@ class TodoListTask extends React.Component {
 
     state = {
         editMode: false,
-        priority: "high",
-        classPriority: "priority"
+
     };
 
-    changePriority = () => {
-        switch (this.state.priority) {
-            case "high":
-                this.setState({
-                    priority: "low",
-                    classPriority: "greenPriority"
-                });
-                break;
-            case  "low":
-                this.setState({
-                    priority: "middle",
-                    classPriority: "redPriority"
-                });
-                break;
-            case  "middle":
-                this.setState({
-                    priority: "high",
-                    classPriority: "priority"
-                });
-                break;
-        }
-    };
 
     activateEditMode = () => {
         this.setState({
             editMode: true
-        })
+        }, () => this.saveState())
     };
     deactivateEditMode = () => {
         this.setState({
             editMode: false
-        })
+        }, () => this.saveState())
     };
 
     onIsDoneChanged = (e) => {
@@ -55,13 +32,19 @@ class TodoListTask extends React.Component {
         this.props.deleteTask(newId);
     };
 
+    changePriorityClick = (e) => {
+        this.props.changePriority(this.props.task.id, e.currentTarget.value)
+    };
+
+
 
     render = () => {
+        let a = "Id Элемента = " + this.props.task.id;
 
         let taskClass = this.props.task.isDone ? "todoList-task done" : "todoList-task";
 
         return (
-            <div className="task">
+            <div className="task" id="i-have-a-tooltip" data-description={a}>
                 <div className={taskClass}>
                     <input
                         type="checkbox"
@@ -79,9 +62,12 @@ class TodoListTask extends React.Component {
                     }
                     <span>
                         <span className="pr">/priority-</span>
-                        <button onClick={this.changePriority} className={this.state.classPriority}>
-                            {this.state.priority}
-                        </button>
+                        <select onChange={this.changePriorityClick}
+                                value={this.props.task.priority}>
+                            <option value ="high">high</option>
+                            <option value ="low">low</option>
+                            <option value ="middle">middle</option>
+                        </select>
                     </span>
                 </div>
                 <button className="deleteButton" onClick={this.onClickAddDelete}>x</button>
