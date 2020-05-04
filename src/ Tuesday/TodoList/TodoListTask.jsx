@@ -5,26 +5,26 @@ class TodoListTask extends React.Component {
 
     state = {
         editMode: false,
-
     };
-
 
     activateEditMode = () => {
         this.setState({
             editMode: true
-        }, () => this.saveState())
+        },)
     };
     deactivateEditMode = () => {
         this.setState({
             editMode: false
-        }, () => this.saveState())
+        },)
     };
 
     onIsDoneChanged = (e) => {
-        this.props.changeStatus(this.props.task.id, e.currentTarget.checked);
+        let finished = this.props.created;
+        this.props.changeStatus(this.props.task.id, e.currentTarget.checked, finished);
     };
     onTitleChanged = (e) => {
-        this.props.changeTitle(this.props.task.id, e.currentTarget.value);
+        let updated = this.props.created;
+        this.props.changeTitle(this.props.task.id, e.currentTarget.value, updated);
     };
 
     onClickAddDelete = () => {
@@ -33,18 +33,27 @@ class TodoListTask extends React.Component {
     };
 
     changePriorityClick = (e) => {
-        this.props.changePriority(this.props.task.id, e.currentTarget.value)
+        let updated = this.props.created;
+        this.props.changePriority(this.props.task.id, e.currentTarget.value, updated)
     };
 
+    changeCreatedClick = () => {
+        let created = this.props.created;
+        this.props.changeCreated(this.props.task.id, created)
+    };
 
+    componentDidMount() {
+        this.changeCreatedClick()
+    }
 
     render = () => {
-        let a = "Id Элемента = " + this.props.task.id;
-
+        let created = "Создано - " + this.props.task.created + ";";
+        let updated = "Обновлено - " + this.props.task.updated + ";";
+        let finished = "Выполнено - " + this.props.task.finished;
         let taskClass = this.props.task.isDone ? "todoList-task done" : "todoList-task";
 
         return (
-            <div className="task" id="i-have-a-tooltip" data-description={a}>
+            <div className="task" id="i-have-a-tooltip" data-description={created + " " + updated + " " + finished}>
                 <div className={taskClass}>
                     <input
                         type="checkbox"
@@ -64,17 +73,15 @@ class TodoListTask extends React.Component {
                         <span className="pr">/priority-</span>
                         <select onChange={this.changePriorityClick}
                                 value={this.props.task.priority}>
-                            <option value ="high">high</option>
-                            <option value ="low">low</option>
-                            <option value ="middle">middle</option>
+                            <option value="high">high</option>
+                            <option value="low">low</option>
+                            <option value="middle">middle</option>
                         </select>
                     </span>
                 </div>
                 <button className="deleteButton" onClick={this.onClickAddDelete}>x</button>
             </div>)
-
     }
 }
-
 
 export default TodoListTask;

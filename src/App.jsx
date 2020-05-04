@@ -12,16 +12,16 @@ import Loading from "./Loading/Loading";
 class App extends React.Component {
 
     state = {
-        loading: true
+        loading: false
     };
 
     loading = () => {
         this.setState({loading: false})
     };
 
-    componentDidMount() {
-        setTimeout(this.loading, 3000)
-    };
+    // componentDidMount() {
+    //     setTimeout(this.loading, 3000)
+    // };
 
 
     render = () => {
