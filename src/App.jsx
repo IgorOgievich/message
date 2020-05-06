@@ -7,25 +7,23 @@ import Tuesday from "./ Tuesday/Tuesday";
 import m from "./App.module.css"
 import {HashRouter, Route} from "react-router-dom";
 import Loading from "./Loading/Loading";
+import Wednesday from "./Wednesday/Wednesday";
+import {connect} from "react-redux";
 
 
 class App extends React.Component {
 
-    state = {
-        loading: false
-    };
-
-    loading = () => {
-        this.setState({loading: false})
-    };
-
-    // componentDidMount() {
-    //     setTimeout(this.loading, 3000)
+    // state = {
+    //     loading: true
     // };
+
+    componentDidMount() {
+        setTimeout(this.props.loading, 2000)
+    };
 
 
     render = () => {
-        if (this.state.loading === false) {
+        if (this.props.loadings === false) {
             return (
                 <HashRouter>
                     <div className={m.App}>
@@ -36,6 +34,7 @@ class App extends React.Component {
                             <Navigations/>
                             <Route exact path="/Monday" render={() => <Monday/>}/>
                             <Route exact path="/Tuesday" render={() => <Tuesday/>}/>
+                            <Route exact path="/Wednesday" render={() => <Wednesday/>}/>
                         </div>
                     </div>
                 </HashRouter>
@@ -50,4 +49,23 @@ class App extends React.Component {
     }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        loadings: state.loading
+    }
+};
+
+const mapDispatchToProps =(dispatch) => {
+    return{
+        loading: () => {
+            const action = {
+                type: "SET_LOADING",
+                loading: false
+            };
+            dispatch(action)
+        }
+    }
+};
+
+const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
+export default ConnectedApp;

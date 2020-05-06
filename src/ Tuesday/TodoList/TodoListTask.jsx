@@ -35,6 +35,7 @@ class TodoListTask extends React.Component {
     changePriorityClick = (e) => {
         let updated = this.props.created;
         this.props.changePriority(this.props.task.id, e.currentTarget.value, updated)
+
     };
 
     changeCreatedClick = () => {

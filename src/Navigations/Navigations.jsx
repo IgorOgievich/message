@@ -18,6 +18,11 @@ class Navigations extends React.Component {
                         <button> Вторник</button>
                     </NavLink>
                 </div>
+                <div className={a.items}>
+                    <NavLink to="/Wednesday">
+                        <button> Среда</button>
+                    </NavLink>
+                </div>
             </div>
         );
     };
