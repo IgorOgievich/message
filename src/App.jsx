@@ -9,6 +9,7 @@ import {HashRouter, Route} from "react-router-dom";
 import Loading from "./Loading/Loading";
 import Wednesday from "./Wednesday/Wednesday";
 import {connect} from "react-redux";
+import {loading} from "./Redux/Reducers/AppReducer";
 
 
 class App extends React.Component {
@@ -51,18 +52,14 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        loadings: state.loading
+        loadings: state.AppReducer.loading
     }
 };
 
-const mapDispatchToProps =(dispatch) => {
-    return{
+const mapDispatchToProps = (dispatch) => {
+    return {
         loading: () => {
-            const action = {
-                type: "SET_LOADING",
-                loading: false
-            };
-            dispatch(action)
+            dispatch(loading())
         }
     }
 };

@@ -1,19 +1,59 @@
 import React from 'react';
-import '../App.module.css';
-import * as axios from "axios";
+import '../index.css'
+import {connect} from "react-redux";
+import {changeStyle, changeStyleBlue, changeStyleGreen, changeStyleRed} from "../Redux/Reducers/WednesdayReducer";
 
 const Wednesday = (props) => {
-    // debugger
-    // axios
-    //     .get("https://social-network.samuraijs.com/api/1.0/users")
-    //     .then(response => {
-    //         debugger
-    //        console.log(response.data.items);
-    // });
 
-    return <div>
-        Igor
-    </div>
+
+    return (
+        <div className="radioInput">
+            <div className={props.style}>
+                <form>
+                    <div>
+                        <input onClick={props.changeStyleRed} type="radio" name="age"/>
+                        - Красная тема
+                    </div>
+                    <div>
+                        <input onClick={props.changeStyleBlue} type="radio" name="age"/>
+                        - Синяя тема
+                    </div>
+                    <div>
+                        <input onClick={props.changeStyleGreen} type="radio" name="age"/>
+                        - Зеленая тема
+                    </div>
+                    <div>
+                        <input onClick={props.changeStyle} type="radio" name="age"/>
+                        - Тема по умолчанию
+                    </div>
+                </form>
+                <h1>Огиевич Игорь Леонидович</h1>
+            </div>
+        </div>)
 };
 
-export default Wednesday;
+const mapStateToProps = (state) => {
+    return {
+        style: state.WednesdayReducer.style
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changeStyle: () => {
+            dispatch(changeStyle())
+        },
+        changeStyleRed: () => {
+            dispatch(changeStyleRed())
+        },
+        changeStyleBlue: () => {
+            dispatch(changeStyleBlue())
+        },
+        changeStyleGreen: () => {
+            dispatch(changeStyleGreen())
+        },
+    }
+};
+
+const ConnectedWednesday = connect(mapStateToProps, mapDispatchToProps)(Wednesday);
+export default ConnectedWednesday;

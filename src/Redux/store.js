@@ -1,25 +1,13 @@
-import {createStore} from "redux";
+import {combineReducers, createStore} from "redux";
+import {AppReducer} from "./Reducers/AppReducer";
+import {WednesdayReducer} from "./Reducers/WednesdayReducer";
 
-const initialstate = {
-    loading: true
-};
+const rootReducer = combineReducers({
+    AppReducer: AppReducer,
+    WednesdayReducer: WednesdayReducer
+});
 
-
-
-
-const reducer = (state = initialstate, action) => {
-    switch (action.type) {
-        case "SET_LOADING":
-            return {...state, loading: action.loading}
-    }
-    return state;
-};
-
-
-
-
-
-const store = createStore(reducer);
+const store = createStore(rootReducer);
 export default store
 
 
