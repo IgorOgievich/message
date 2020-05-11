@@ -15,6 +15,7 @@ export const changeStyle = () => {
     }
 };
 
+
 export const changeStyleRed = () => {
     return {
         type: CHANGE_STYLE_RED,
