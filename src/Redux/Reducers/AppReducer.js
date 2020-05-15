@@ -2,7 +2,7 @@ export const SET_LOADING = "Message/reducer/SET-LOADING";
 
 
 const initialstater = {
-    loading: true
+    loading: false
 };
 
 export const loading = () => {
