@@ -25,24 +25,18 @@ const Wednesday = (props) => {
         };
 
 
+    // let OnChangeInput = () => {
+    //     if (props.isDoneChecked === true) {
+    //         props.changeInputFalse()
+    //     } else {
+    //         props.changeInputTrue()
+    //     }
+    // };
+
     let OnChangeInput = () => {
-        if (props.isDoneChecked === true) {
-            props.changeInputFalse()
-        } else {
-            props.changeInputTrue()
-        }
+       props.isDoneChecked ? props.changeInputFalse() : props.changeInputTrue();
     };
 
-    // let ClickButtonSend = () => {
-    //     axios.post(
-    //         `https://neko-cafe-back.herokuapp.com/auth/test`,
-    //         {success: true, isDone: props.isDoneChecked},
-    //     )
-    //         .then(response => {
-    //             debugger
-    //                 console.log(response.data);
-    //         })
-    // };
 
     return (
         <div className="radioInput">

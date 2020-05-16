@@ -17,21 +17,6 @@ export const changeStyle = () => {
     }
 };
 
-export const changeInputFalse = () => {
-    return {
-        type: CHANGE_INPUT_FALSE,
-        changeInputFalse: false
-    }
-};
-
-export const changeInputTrue = () => {
-    return {
-        type: CHANGE_INPUT_TRUE,
-        changeInputTrue: true
-    }
-};
-
-
 export const changeStyleRed = () => {
     return {
         type: CHANGE_STYLE_RED,
@@ -50,6 +35,20 @@ export const changeStyleGreen = () => {
     return {
         type: CHANGE_STYLE_GREEN,
         changeStyleGreen: "radioInputGreen"
+    }
+};
+
+export const changeInputFalse = () => {
+    return {
+        type: CHANGE_INPUT_FALSE,
+        changeInputFalse: false
+    }
+};
+
+export const changeInputTrue = () => {
+    return {
+        type: CHANGE_INPUT_TRUE,
+        changeInputTrue: true
     }
 };
 
