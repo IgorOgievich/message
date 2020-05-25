@@ -1,7 +1,7 @@
 export const SET_LOADING = "Message/reducer/SET-LOADING";
 
 
-const initialstater = {
+const initialState = {
     loading: false
 };
 
@@ -13,7 +13,7 @@ export const loading = () => {
 };
 
 
-export const AppReducer = (state = initialstater, action) => {
+export const AppReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_LOADING:
             return {...state, loading: action.loading}
