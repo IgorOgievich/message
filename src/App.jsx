@@ -14,10 +14,6 @@ import {loading} from "./Redux/Reducers/AppReducer";
 
 class App extends React.Component {
 
-    // state = {
-    //     loading: true
-    // };
-
     componentDidMount() {
         setTimeout(this.props.loading, 2000)
     };
@@ -55,6 +51,7 @@ const mapStateToProps = (state) => {
         loadings: state.AppReducer.loading
     }
 };
+
 
 const mapDispatchToProps = (dispatch) => {
     return {

@@ -1,3 +1,5 @@
+import api from "../../Dal/api";
+
 export const CHANGE_STYLE = "Message/reducer/CHANGE-STYLE";
 export const CHANGE_STYLE_RED = "Message/reducer/CHANGE-STYLE-RED";
 export const CHANGE_STYLE_BLUE = "Message/reducer/CHANGE-STYLE-BLUE";
@@ -101,3 +103,27 @@ export const WednesdayReducer = (state = initialstate, action) => {
     }
     return state;
 };
+
+// THUNKS
+
+export const request = (isDoneChecked) =>  (dispatch) => {
+   dispatch (changeLoadings(true));
+   dispatch (changeButtonSendTrue());
+  return tryCatch(() => api.submitPost(isDoneChecked), dispatch);
+};
+
+ const tryCatch =  async (request, dispatch) =>  {
+    try {
+        const response = await request();
+        dispatch(changeButtonSendFalse());
+        console.log('answer: ', response.data);
+        dispatch(changeLoadings(false));
+        return response;
+    } catch (e) {
+        dispatch(changeButtonSendFalse());
+        console.log('error: ', {...e});
+       dispatch(changeLoadings(false));
+        return 'error';
+    }
+};
+

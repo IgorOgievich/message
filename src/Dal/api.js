@@ -1,5 +1,4 @@
 import axios from "axios";
-import {Igor} from "../Wednesday/Wednesday";
 
 
 const instance = axios.create({

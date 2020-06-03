@@ -10,38 +10,13 @@ import {
     changeStyle,
     changeStyleBlue,
     changeStyleGreen,
-    changeStyleRed,
+    changeStyleRed, request,
 } from "../Redux/Reducers/WednesdayReducer";
-import api from "../Dal/api";
-import {tryCatch} from "../Dal/api";
-
 
 class Wednesday extends React.Component {
 
-    f = () => {
-        this.props.changeLoadings(true);
-        this.props.changeButtonSendTrue();
-        return api.submitPost(this.props.isDoneChecked)
-        // .then(response => {
-        //     this.props.changeButtonSendFalse();
-        //     this.props.changeloadings(false);
-        //     return response
-        // })
-    };
-
-    tryCatch = async (f) => {
-        try {
-            const response = await f();
-            this.props.changeButtonSendFalse();
-            console.log('answer: ', response.data);
-            this.props.changeLoadings(false);
-            return response;
-        } catch (e) {
-            this.props.changeButtonSendFalse();
-            console.log('error: ', {...e});
-            this.props.changeLoadings(false);
-            return 'error';
-        }
+    request = () => {
+        this.props.request(this.props.isDoneChecked)
     };
 
     OnChangeInput = () => {
@@ -74,7 +49,7 @@ class Wednesday extends React.Component {
                     <h1>Огиевич Игорь Леонидович</h1>
                     <div>
                         <input type="checkbox" checked={this.props.isDoneChecked} onChange={this.OnChangeInput}/>
-                        <button disabled={this.props.buttonSendProgress} onClick={() => this.tryCatch(this.f)}>SEND
+                        <button disabled={this.props.buttonSendProgress} onClick={this.request}>SEND
                         </button>
                     </div>
                 </div>
@@ -120,6 +95,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         changeLoadings: (change) => {
             dispatch(changeLoadings(change))
+        },
+        request: (isDoneChecked) => {
+            dispatch(request(isDoneChecked))
         }
     }
 };
